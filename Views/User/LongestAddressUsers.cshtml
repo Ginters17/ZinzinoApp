@@ -1,0 +1,27 @@
+﻿@model IEnumerable<dynamic>
+
+@{
+    ViewData["Title"] = "Users with Longest Address";
+}
+
+<h1>Users with Longest Address</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Address</th>
+            <th>Address Length</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.User</td>
+                <td>@user.Address</td>
+                <td>@user.AddressLength</td>
+            </tr>
+        }
+    </tbody>
+</table>

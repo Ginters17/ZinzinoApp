@@ -1,0 +1,30 @@
+﻿@model IEnumerable<dynamic>
+
+@{
+    ViewData["Title"] = "Users with same City and State";
+}
+
+<h1>Users with same City and State</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>City</th>
+            <th>State</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            foreach (var address in user.UserAddresses)
+            {
+                <tr>
+                    <td>@user.User</td>
+                    <td>@address.City</td>
+                    <td>@address.State</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
