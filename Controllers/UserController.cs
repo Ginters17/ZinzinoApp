@@ -46,7 +46,7 @@ namespace MyApp.Controllers
         }
 
         [HttpGet("UserCountByState")]
-        public async Task<IActionResult> UserCountByState(bool returnAsView = false)
+        public async Task<IActionResult> UserCountByState()
         {
             try
             {
