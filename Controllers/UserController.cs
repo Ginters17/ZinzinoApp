@@ -8,6 +8,7 @@ namespace MyApp.Controllers
     {
         private readonly MyAppDbContext _context;
 
+        // TODO: Change queries in actions to select multiple addresses
         public UserController(MyAppDbContext context)
         {
             _context = context;
@@ -17,11 +18,17 @@ namespace MyApp.Controllers
         public async Task<IActionResult> UsersByCityAndState(int pageNumber = 1, int pageSize = 10)
         {
             var usersInCityAndState = await _context.Users
-                .Where(u => u.Addresses.Any(a => a.City == a.State))
+                .Where(u => _context.Addresses
+                    .Where(a => a.City == u.Addresses.FirstOrDefault().City && a.State == u.Addresses.FirstOrDefault().State)
+                    .Count() > 1)
                 .Select(u => new
                 {
                     User = u.Username,
-                    UserAddresses = u.Addresses
+                    UserAddresses = u.Addresses.Select(a => new
+                    {
+                        a.City,
+                        a.State
+                    })
                 })
                 .OrderBy(u => u.User)
                 .Skip((pageNumber - 1) * pageSize)

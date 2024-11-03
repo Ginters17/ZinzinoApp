@@ -20,6 +20,12 @@ namespace MyApp.Models.SeedData
                     Username = "janis",
                     EmailAddress = "janis@example.com",
                     Password = "P@ssword1"
+                },
+                new() {
+                    Id = 3,
+                    Username = "pēteris",
+                    EmailAddress = "peteris@example.com",
+                    Password = "P@ssword1"
                 }
             };
 
@@ -40,6 +46,15 @@ namespace MyApp.Models.SeedData
                     Id= 2,
                     UserId = 2,
                     AddressLine1 = "Mēness iela 2",
+                    AddressLine2 = null,
+                    City = "Cēsis",
+                    State = "Latvia",
+                    ZipCode = "LV-4101"
+                },
+                new() {
+                    Id= 3,
+                    UserId = 3,
+                    AddressLine1 = "Sapņu iela 2",
                     AddressLine2 = null,
                     City = "Cēsis",
                     State = "Latvia",

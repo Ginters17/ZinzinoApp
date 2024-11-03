@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "RHYIUHqm1thXJL1kwjvaFer1vzEPZTRZY3K+wDu9yO8=",
+  "Hash": "o4wnYVFpLJf/7bpHJBRCBJrRZcDJ95F4buGS3NWEUtI=",
   "Source": "MyApp",
   "BasePath": "_content/MyApp",
   "Mode": "Default",
@@ -53,6 +53,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\PersonalProjects\\MyApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\MyApp.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\PersonalProjects\\MyApp\\wwwroot\\css\\home.css",
+      "SourceId": "MyApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\PersonalProjects\\MyApp\\wwwroot\\",
+      "BasePath": "_content/MyApp",
+      "RelativePath": "css/home.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\home.css"
     },
     {
       "Identity": "C:\\PersonalProjects\\MyApp\\wwwroot\\css\\site.css",

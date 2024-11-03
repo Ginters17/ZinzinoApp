@@ -1,0 +1,17 @@
+﻿.home-header {
+    font-weight: 700;
+}
+
+.features-list a {
+    border: 1px solid black;
+    border-radius: 10px;
+    max-width: 600px;
+    color: black;
+    background-color: #e7e7e7;
+    margin: 20px auto;
+}
+
+.features-list a:hover {
+    background-color: #d9d7d7;
+    border: 1px solid black;
+}

@@ -1,8 +1,17 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4 home-header">
+        Welcome to Zinzino assessment app
+    </h1>
+    <h3>Try the app's features:</h3>
+    <div class="features-list mt-4">
+        <a class="nav-link text-dark btn btn-primary" asp-area="" asp-controller="Account" asp-action="Register">Register account</a>
+        <a class="nav-link text-dark btn btn-primary" asp-area="" asp-controller="User" asp-action="LongestAddressUsers">Find users with longest addresses</a>
+        <a class="nav-link text-dark btn btn-primary" asp-area="" asp-controller="User" asp-action="UserCountByState">Find user count by state</a>
+        <a class="nav-link text-dark btn btn-primary" asp-area="" asp-controller="User" asp-action="UsersByCityAndState">Find users who share city and state with someone else</a>
+    </div>
 </div>

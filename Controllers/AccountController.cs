@@ -27,7 +27,6 @@ namespace MyApp.Controllers
         {
             if (!ModelState.IsValid || _context.Users == null)
             {
-                ViewData["ErrorMessage"] = "Registration not successful! Check your data!";
                 return View(registerUserViewModel);
             }
 
@@ -35,11 +34,12 @@ namespace MyApp.Controllers
             {
                 await _userService.CreateUserAsync(registerUserViewModel);
                 ViewData["SuccessMessage"] = "Registration successful!";
+                ModelState.Clear();
                 return View();
             }
-            catch (Exception ex)
+            catch
             {
-                ViewData["ErrorMessage"] = $"Something went wrong! {ex}";
+                ViewData["ErrorMessage"] = "Something went wrong! Try again!";
                 return View(registerUserViewModel);
             }
         }
