@@ -17,7 +17,9 @@ namespace MyApp.Controllers
         [HttpGet("UsersByCityAndState")]
         public async Task<IActionResult> UsersByCityAndState(int pageNumber = 1, int pageSize = 10)
         {
-            var usersInCityAndState = await _context.Users
+            try
+            {
+                var usersInCityAndState = await _context.Users
                 .Where(u => _context.Addresses
                     .Where(a => a.City == u.Addresses.FirstOrDefault().City && a.State == u.Addresses.FirstOrDefault().State)
                     .Count() > 1)
@@ -35,13 +37,20 @@ namespace MyApp.Controllers
                 .Take(pageSize)
                 .ToListAsync();
 
-            return View(usersInCityAndState);
+                return Ok(usersInCityAndState);
+            }
+            catch
+            {
+                return StatusCode(500, "Something went wrong server side");
+            }
         }
 
         [HttpGet("UserCountByState")]
-        public async Task<IActionResult> UserCountByState()
+        public async Task<IActionResult> UserCountByState(bool returnAsView = false)
         {
-            var userCountByState = await _context.Users
+            try
+            {
+                var userCountByState = await _context.Users
                 .GroupBy(u => u.Addresses.FirstOrDefault().State)
                 .Select(g => new
                 {
@@ -51,13 +60,20 @@ namespace MyApp.Controllers
                 .OrderBy(x => x.State)
                 .ToListAsync();
 
-            return View(userCountByState);
+                return Ok(userCountByState);
+            }
+            catch
+            {
+                return StatusCode(500, "Something went wrong server side");
+            }
         }
 
         [HttpGet("LongestAddressUsers")]
         public async Task<IActionResult> LongestAddressUsers()
         {
-            var usersWithAddress = await _context.Users
+            try
+            {
+                var usersWithAddress = await _context.Users
                 .Select(u => new
                 {
                     User = u.Username,
@@ -65,18 +81,23 @@ namespace MyApp.Controllers
                 })
                 .ToListAsync();
 
-            var usersWithAddressLength = usersWithAddress
-                .Select(u => new
-                {
-                    u.User,
-                    u.Address,
-                    AddressLength = u.Address?.Length
-                })
-                .OrderByDescending(x => x.AddressLength)
-                .ToList();
+                var usersWithAddressLength = usersWithAddress
+                    .Select(u => new
+                    {
+                        u.User,
+                        u.Address,
+                        AddressLength = u.Address?.Length
+                    })
+                    .OrderByDescending(x => x.AddressLength)
+                    .ToList();
 
 
-            return View(usersWithAddressLength);
+                return Ok(usersWithAddressLength);
+            }
+            catch
+            {
+                return StatusCode(500, "Something went wrong server side");
+            }
         }
     }
 }
